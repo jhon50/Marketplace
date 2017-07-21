@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @loja.nome %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @loja.website %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @loja.logo %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @loja.email %>
+</p>
+
+<%= link_to 'Edit', edit_loja_path(@loja) %> |
+<%= link_to 'Back', lojas_path %>

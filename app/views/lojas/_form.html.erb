@@ -1,0 +1,37 @@
+<%= form_with(model: loja, local: true) do |form| %>
+  <% if loja.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(loja.errors.count, "error") %> prohibited this loja from being saved:</h2>
+
+      <ul>
+      <% loja.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, id: :loja_nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website, id: :loja_website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logo %>
+    <%= form.text_field :logo, id: :loja_logo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :loja_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
