@@ -3,7 +3,7 @@ class Produto
   include Mongoid::Attributes::Dynamic
 
   include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  # include Elasticsearch::Model::Callbacks
 
   belongs_to :loja
 
