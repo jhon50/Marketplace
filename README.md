@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Modelo de Marketplace
 
-Things you may want to cover:
+* usuário admin para testes
 
-* Ruby version
+email: teste@gmail.com
 
-* System dependencies
+senha: 123123
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+Para deletar todos os produtos importados
 
-* How to run the test suite
+produtos/delete_all
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+Para realizar a importação das API's
+para o mongoDB
+
+produtos/import
