@@ -23,13 +23,11 @@
   <div class="col-md-12">
     <div class="row">
       <% @produtos.each do |produto| %>
-          <% if produto.present? %>
           <div class="col-md-3">
             <p><%= produto.productName %></p>
 
-
+            <img src="<%= produto['items'][0]['images'][0]['imageUrl'] %>" width="200" />
           </div>
-          <% end %>
       <% end %>
     </div>
   </div>
