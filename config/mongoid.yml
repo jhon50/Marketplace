@@ -1,3 +1,18 @@
+production:
+  clients:
+    default:
+      database: marketplace_development
+      hosts:
+        - cluster0-shard-00-00-7ilbm.mongodb.net:27017
+        - cluster0-shard-00-01-7ilbm.mongodb.net:27017
+        - cluster0-shard-00-02-7ilbm.mongodb.net:27017
+      options:
+         user: 'john'
+         password: '16cj1CKNkj2r1'
+         auth_source: admin
+         ssl: true
+  options:
+
 development:
   # Configure available database clients. (required)
   clients:
