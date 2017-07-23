@@ -1,3 +1,6 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+
+  # REMOVIDO APENAS PARA USO DO NGROK.IO
+  # protect_from_forgery with: :exception
+
 end

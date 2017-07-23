@@ -63,6 +63,7 @@ gem 'httparty'
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-# gem 'bonsai-elasticsearch-rails'
+
+gem 'kaminari'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'

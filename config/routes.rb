@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :import
+      get :delete_all
     end
   end
 

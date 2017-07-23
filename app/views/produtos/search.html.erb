@@ -26,9 +26,14 @@
       <% @produtos.each do |produto| %>
           <div class="col-md-3">
             <p><%= produto.productName %></p>
-
             <img src="<%= produto['items'][0]['images'][0]['imageUrl'] %>" width="200" />
           </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="row">
+      <% unless @search_for.present? %>
+      <%= paginate @produtos, outer_window: 3, class: 'pagination' %>
       <% end %>
     </div>
   </div>

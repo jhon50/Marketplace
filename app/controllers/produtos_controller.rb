@@ -4,12 +4,16 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.all
+    @produtos = Produto.page params[:page]
   end
 
   def search
     @search_for = params[:elastic]
-    @produtos = Produto.search(@search_for).records
+    if @search_for.present?
+      @produtos = Produto.search(@search_for).records
+    else
+      @produtos = Produto.page params[:page]
+    end
   end
 
   # GET /produtos/1
@@ -68,17 +72,35 @@ class ProdutosController < ApplicationController
 
   def import
 
-    url = 'https://www.fossil.com.br/api/catalog_system/pub/products/search/'
-    response = HTTParty.get(url)
+    #IMPORT PRODUTOS FOSSIL
+    array = [
+        'https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49',
+        'https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=50&_to=99',
+        'https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=200&_to=230'
+    ]
+    Importer::import(array, 'Fossil')
 
-    l = Loja.first
+    # # #IMPORT PRODUTOS TIMEX
+    array = [
+        'http://www.timex.com.br/api/catalog_system/pub/products/search?_from=0&_to=49',
+        'http://www.timex.com.br/api/catalog_system/pub/products/search?_from=50&_to=99',
+        'http://www.timex.com.br/api/catalog_system/pub/products/search?_from=100&_to=130'
+    ]
+    Importer::import(array, 'Timex')
 
-    # importa os produtos para a loja
-    response.parsed_response.each do |item|
-      l.produtos.create! item
-    end
+    # #IMPORT PRODUTOS SCHUMANN
+    array = [
+        'https://www.schumann.com.br/api/catalog_system/pub/products/search?_from=2000&_to=2049',
+        'https://www.schumann.com.br/api/catalog_system/pub/products/search?_from=2050&_to=2099',
+        'https://www.schumann.com.br/api/catalog_system/pub/products/search?_from=2100&_to=2140'
+    ]
+    Importer::import(array, 'Schumann')
 
-    l.save
+
+  end
+
+  def delete_all
+    Produto.delete_all
   end
 
   private
