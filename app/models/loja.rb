@@ -2,7 +2,6 @@ class Loja
   include Mongoid::Document
 
   include Elasticsearch::Model
-  #include Elasticsearch::Model::Callbacks
 
   has_many :produtos
   accepts_nested_attributes_for :produtos, :allow_destroy => true

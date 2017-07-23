@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :produtos do
     collection do
       get :search
+      get :import
     end
   end
 

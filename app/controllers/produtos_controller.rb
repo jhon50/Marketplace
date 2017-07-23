@@ -66,6 +66,21 @@ class ProdutosController < ApplicationController
     end
   end
 
+  def import
+
+    url = 'https://www.fossil.com.br/api/catalog_system/pub/products/search/'
+    response = HTTParty.get(url)
+
+    l = Loja.first
+
+    # importa os produtos para a loja
+    response.parsed_response.each do |item|
+      l.produtos.create! item
+    end
+
+    l.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_produto
