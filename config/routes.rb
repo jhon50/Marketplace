@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+
+  resources :produtos do
+    collection do
+      get :search
+    end
+  end
+
   resources :lojas
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 

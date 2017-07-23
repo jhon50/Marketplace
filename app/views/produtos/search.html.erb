@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <h5>Buscar Produtos</h5>
+    </div>
+  </div>
+  <%= form_tag('/produtos/search', method: "get") do %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= text_field_tag(:elastic, @search_for, class: "form-control") %>
+        </div>
+
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+      </div>
+
+  <% end %>
+
+</div>
+<br>
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="row">
+      <% @produtos.each do |produto| %>
+          <div class="col-md-3">
+            <p><%= produto.productName %></p>
+
+            <img src="<%= produto['items'][0]['images'][0]['imageUrl'] %>" width="200" />
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

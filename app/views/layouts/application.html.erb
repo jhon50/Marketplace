@@ -1,21 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Marketplace</title>
-    <%= csrf_meta_tags %>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <title>Cover Template for Bootstrap</title>
 
-  <body>
+  <%= csrf_meta_tags %>
 
-  <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-      <%= link_to "Login", new_user_session_path %>
-  <% end %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag "cover" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <%= yield %>
-  </body>
+<body>
+
+<div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+    <div class="container">
+
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand">Marketplace</h3>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="#"></a></li>
+              <li><a href="/produtos">Produtos</a></li>
+              <li><a href="/admin">Admin</a></li>
+              <li><% if current_user %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                <% else %>
+                    <%= link_to "Login", new_user_session_path %>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="content">
+        <%= yield %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
 </html>
