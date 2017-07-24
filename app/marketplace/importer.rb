@@ -21,7 +21,7 @@ class Importer
     loja.save
   end
 
-
+  # replaces '.' (dot) from json keys
   def self.nested_gsub(object, pattern = '.', replace = '_')
     if object.is_a? Hash
       object.map do |k, v|

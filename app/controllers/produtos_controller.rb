@@ -80,7 +80,7 @@ class ProdutosController < ApplicationController
     ]
     Importer::import(array, 'Fossil')
 
-    # # #IMPORT PRODUTOS TIMEX
+    #IMPORT PRODUTOS TIMEX
     array = [
         'http://www.timex.com.br/api/catalog_system/pub/products/search?_from=0&_to=49',
         'http://www.timex.com.br/api/catalog_system/pub/products/search?_from=50&_to=99',
@@ -88,7 +88,7 @@ class ProdutosController < ApplicationController
     ]
     Importer::import(array, 'Timex')
 
-    # #IMPORT PRODUTOS SCHUMANN
+    #IMPORT PRODUTOS SCHUMANN
     array = [
         'https://www.schumann.com.br/api/catalog_system/pub/products/search?_from=2000&_to=2049',
         'https://www.schumann.com.br/api/catalog_system/pub/products/search?_from=2050&_to=2099',
@@ -96,10 +96,14 @@ class ProdutosController < ApplicationController
     ]
     Importer::import(array, 'Schumann')
 
+    #REFRESH ELASTICSEARCH INDEXES
+    Produto.__elasticsearch__.delete_index!
+    Produto.__elasticsearch__.create_index!
+    Produto.import
+
     respond_to do |format|
       format.html { redirect_to action: :index, notice: 'Produtos importados com sucesso' }
     end
-
   end
 
   def delete_all

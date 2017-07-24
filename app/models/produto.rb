@@ -10,7 +10,7 @@ class Produto
   paginates_per 20
 
   def as_indexed_json(options={})
-    as_json(except: [:id, :_id])
+    as_json(except: [:id, :_id], only: [:productName])
   end
 
   field :productId, type: Integer
