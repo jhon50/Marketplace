@@ -96,11 +96,18 @@ class ProdutosController < ApplicationController
     ]
     Importer::import(array, 'Schumann')
 
+    respond_to do |format|
+      format.html { redirect_to action: :index, notice: 'Produtos importados com sucesso' }
+    end
 
   end
 
   def delete_all
     Produto.delete_all
+
+    respond_to do |format|
+      format.html { redirect_to action: :index, notice: 'Todos os produtos deletados com sucesso' }
+    end
   end
 
   private
