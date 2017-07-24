@@ -20,3 +20,7 @@ Para realizar a importação das API's
 para o mongoDB
 
 produtos/import
+
+URL HEROKU
+(apenas elasticsearch não funciona)
+https://salty-beach-52992.herokuapp.com/
